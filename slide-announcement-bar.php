@@ -24,8 +24,14 @@ if( ! class_exists( 'ADA_Slide_Bar' ) ){
         function __construct(){
             $this->define_constants();
 
+            add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
+
             require_once( ADA_SLIDE_BAR_PATH . 'post-types/class.ada-slide-bar_cpt.php' );
             $ada_slide_bar_post_type = new ADA_Slide_bar_post_type();
+
+            require_once( ADA_SLIDE_BAR_PATH . 'class.ada-announcement-bar_view.php' );
+            $mv_slider_bar_view = new ADA_Slider_Bar_view();
+
         }
 
         public function define_constants(){
@@ -45,6 +51,10 @@ if( ! class_exists( 'ADA_Slide_Bar' ) ){
 
         public static function uninstall(){
 
+        }
+
+        public function register_scripts(){
+            wp_register_style( 'ada-main-style', ADA_SLIDE_BAR_URL . 'assets/css/top-bar-slider.css', array(), ADA_SLIDE_BAR_VERSION, 'all' );
         }
 
 
