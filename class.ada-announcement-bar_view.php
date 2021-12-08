@@ -7,6 +7,7 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
         }
 
         public function mv_slider_bar_render(){
+            $options = get_option( 'ada_slide_bar_options' );
             ob_Start();
             require( ADA_SLIDE_BAR_PATH . 'views/top-bar-slider.php' );
             wp_enqueue_script( 'slick-main-js' );
@@ -14,6 +15,9 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
             wp_enqueue_style( 'ada-main-style' );
             wp_enqueue_style( 'slick-main-style' );
             wp_enqueue_style( 'slick-theme-style' );
+            wp_localize_script( 'slick-options-js', 'slickOptions', array(
+                'autoplaySpeed' => $options['ada_slide_bar_autoplay_speed']
+            ) );
             echo ob_get_clean();
         }
     }
