@@ -54,7 +54,11 @@ if( ! class_exists( 'ADA_Slide_Bar' ) ){
         }
 
         public function register_scripts(){
+            wp_register_script( 'slick-main-js', ADA_SLIDE_BAR_URL . 'vendor/slick/slick.min.js', array( 'jquery' ), ADA_SLIDE_BAR_VERSION, true );
+            wp_register_script( 'slick-options-js', ADA_SLIDE_BAR_URL . 'vendor/slick/slick.js', array( 'jquery' ), ADA_SLIDE_BAR_VERSION, true );
             wp_register_style( 'ada-main-style', ADA_SLIDE_BAR_URL . 'assets/css/top-bar-slider.css', array(), ADA_SLIDE_BAR_VERSION, 'all' );
+            wp_register_style( 'slick-main-style', ADA_SLIDE_BAR_URL . 'vendor/slick/slick.css', array(), ADA_SLIDE_BAR_VERSION, 'all' );
+            wp_register_style( 'slick-theme-style', ADA_SLIDE_BAR_URL . 'vendor/slick/slick-theme.css', array(), ADA_SLIDE_BAR_VERSION, 'all' );
         }
 
 

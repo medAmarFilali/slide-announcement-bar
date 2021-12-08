@@ -1,9 +1,17 @@
-.ada-top-bar-wrapper {
+
+.slick-slider {
     background-color: #333;
-    color: #fff;
-    text-align: center;
+    width: 100%;
+    padding: 8px 0;
 }
 
-.ada-top-bar-wrapper p {
+.announcement-wrapper {
+    /* color: #fff; */
+    text-align: center;
+    width: 100%;
+}
+
+.announcement-wrapper p {
     margin: 0;
+    color: #fff;
 }

@@ -9,7 +9,11 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
         public function mv_slider_bar_render(){
             ob_Start();
             require( ADA_SLIDE_BAR_PATH . 'views/top-bar-slider.php' );
-            wp_enqueue_style( 'ada-main-style' ) ;
+            wp_enqueue_script( 'slick-main-js' );
+            wp_enqueue_script( 'slick-options-js' );
+            wp_enqueue_style( 'ada-main-style' );
+            wp_enqueue_style( 'slick-main-style' );
+            wp_enqueue_style( 'slick-theme-style' );
             echo ob_get_clean();
         }
     }
