@@ -32,6 +32,17 @@ if ( ! class_exists( 'ADA_Slide_Bar_settings' ) ){
             );
 
             add_settings_field(
+                'ada_slide_bar_only_home_page',
+                esc_html__( "Enable only on home page", 'ada_slide_bar' ),
+                array( $this, 'ada_slide_bar_enable_home_callback' ),
+                'ada_slide_bar_main_page',
+                'ada_slide_bar_main_section',
+                array(
+                    'label_for' => 'enable_home_only'
+                )
+            );
+
+            add_settings_field(
                 'ada_slide_bar_style',
                 esc_html__( 'Top bar style', 'ada_slide_bar' ),
                 array( $this, 'ada_slide_bar_style_callback' ),
@@ -67,6 +78,22 @@ if ( ! class_exists( 'ADA_Slide_Bar_settings' ) ){
                     <?php
                         if( isset( self::$options['enable_top_bar'] ) ){
                             checked( '1', self::$options['enable_top_bar'], true );
+                        }
+                    ?>
+                />
+            <?php
+        }
+
+        public function ada_slide_bar_enable_home_callback(){
+            ?>
+                <input 
+                    type="checkbox"
+                    name="ada_slide_bar_options[enable_home_only]"
+                    id="enable_home_only"
+                    value="1"
+                    <?php
+                        if( isset( self::$options['enable_home_only'] ) ){
+                            checked( '1', self::$options['enable_home_only'], true );
                         }
                     ?>
                 />
