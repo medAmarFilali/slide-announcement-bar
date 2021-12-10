@@ -1,4 +1,8 @@
-<div class="slick-slider">
+<?php
+    $options = get_option('ada_slide_bar_options');
+?>
+
+<div class="slick-slider <?php echo $options['ada_slide_bar_style']; ?> ">
         <?php
             $count = 0;
             $args = array(
