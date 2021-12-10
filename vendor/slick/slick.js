@@ -3,7 +3,7 @@ jQuery(window).load(function () {
     autoplay: true,
     autoplaySpeed: slickOptions.autoplaySpeed,
     infinite: true,
-    arrows: true,
+    arrows: false,
     // dots: true,
   });
 });

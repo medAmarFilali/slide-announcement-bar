@@ -16,7 +16,7 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
             wp_enqueue_style( 'slick-main-style' );
             wp_enqueue_style( 'slick-theme-style' );
             wp_localize_script( 'slick-options-js', 'slickOptions', array(
-                'autoplaySpeed' => $options['ada_slide_bar_autoplay_speed']
+                'autoplaySpeed' => ( isset( $options['ada_slide_bar_autoplay_speed'] ) ) ? $options['ada_slide_bar_autoplay_speed'] : 3000
             ) );
             echo ob_get_clean();
         }
