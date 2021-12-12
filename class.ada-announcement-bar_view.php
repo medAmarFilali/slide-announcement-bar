@@ -33,7 +33,7 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
                 } else {
                     return;
                 }
-            } elseif( $count($posts) == 0 ) {
+            } elseif( count($posts) == 0 ) {
                 return;
             } else {
                 ob_Start();
