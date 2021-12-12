@@ -57,6 +57,19 @@ if( ! class_exists( 'ADA_Slide_Bar' ) ){
         }
 
         public static function uninstall(){
+            delete_option( 'ada_slide_bar_options' );
+
+            $posts = get_posts(
+                array(
+                    'post_type' => 'ada-announcement',
+                    'number_posts' => -1,
+                    'post_status' => 'any'
+                )
+            );
+
+            foreach( $posts as $post ){
+                wp_delete_post( $post->ID, true );
+            }
 
         }
 
@@ -99,7 +112,6 @@ if( ! class_exists( 'ADA_Slide_Bar' ) ){
         }
 
         public function admin_enqueue_scripts( $hook_suffix ){
-            echo $hook_suffix;
             if( $hook_suffix == 'toplevel_page_ada_slide_bar' ){
                 wp_enqueue_style( 'ada-slide-bar-style', ADA_SLIDE_BAR_URL . 'assets/css/admin.css', array(), ADA_SLIDE_BAR_VERSION, 'all' );
                 wp_enqueue_script( 'ada-slide-bar-script', ADA_SLIDE_BAR_URL . 'assets/js/admin.js', array(), ADA_SLIDE_BAR_VERSION, true );

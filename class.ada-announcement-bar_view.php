@@ -6,7 +6,16 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
             add_action( 'wp_body_open', array( $this, 'mv_slider_bar_render') );
         }
 
+        
+
         public function mv_slider_bar_render(){
+            $posts = get_posts(
+                array(
+                    'post_type' =>  'ada_announcement',
+                    'number_posts' => -1,
+                    'posts_status' => 'any'
+                )
+            );
             $options = get_option( 'ada_slide_bar_options' );
             if( isset( $options['enable_home_only'] ) && $options['enable_home_only']  ){
                 if( is_front_page() ){
@@ -24,6 +33,8 @@ if ( ! class_exists( 'ADA_Slider_Bar_view' ) ){
                 } else {
                     return;
                 }
+            } elseif( $count($posts) == 0 ) {
+                return;
             } else {
                 ob_Start();
                 require( ADA_SLIDE_BAR_PATH . 'views/top-bar-slider.php' );
